@@ -1,0 +1,17 @@
+<section class="bug-section section-pad">
+  <div>
+    <span class="mono">DEPARTMENT OF QUALITY ASSURANCE</span>
+    <h2>Found a bug?</h2>
+    <p>Our support team is very approachable.<br />Usually.</p>
+  </div>
+  <div class="bug-arena" id="bug-arena">
+    <button id="bug-button">Report a bug <span>↗</span></button>
+    <p id="bug-status" aria-live="polite">This should be straightforward.</p>
+  </div>
+</section>
+
+<script>
+  import { initBugButton } from '../../scripts/bug-button';
+  import { openContact } from '../../scripts/contact-dialog';
+  initBugButton(openContact);
+</script>

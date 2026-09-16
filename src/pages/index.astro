@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Ticker from '../components/Ticker.astro';
+import ContactDialog from '../components/ContactDialog.astro';
+import Hero from '../components/sections/Hero.astro';
+import Work from '../components/sections/Work.astro';
+import Playground from '../components/sections/Playground.astro';
+import About from '../components/sections/About.astro';
+import BugReport from '../components/sections/BugReport.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<BaseLayout>
+  <div class="page-frame">
+    <Header />
+    <main>
+      <Hero />
+      <Ticker />
+      <Work />
+      <Playground />
+      <About />
+      <BugReport />
+      <Contact />
+    </main>
+  </div>
+  <ContactDialog />
+</BaseLayout>

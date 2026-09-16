@@ -1,0 +1,19 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+
+const year = new Date().getFullYear();
+---
+
+<section id="contact" class="contact section-pad">
+  <SectionLabel index="04" title="YOUR MOVE" note="END OF PAGE. START OF SOMETHING?" />
+  <h2>NOW YOU<br /><span>KNOW.</span><span class="contact-asterisk" aria-hidden="true">✳</span></h2>
+  <div class="contact-bottom">
+    <p>Got something worth building?<br />Let’s make it feel right.</p>
+    <button class="contact-cta" id="contact-open">Let’s talk <span>↗</span></button>
+  </div>
+  <footer class="mono">
+    <a href="#top">© <span id="year">{year}</span> TOMASZ KNURA</a>
+    <span>NO TEMPLATES WERE HARMED. A FEW PIXELS WERE.</span>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+</section>

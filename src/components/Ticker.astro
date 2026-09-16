@@ -1,0 +1,8 @@
+---
+const phrases = ['BUILT WITH INTENTION', 'BROKEN WITH PERSONALITY', 'SWEAT THE SMALL STUFF'];
+const loop = [...phrases, ...phrases];
+---
+
+<div class="ticker" aria-hidden="true">
+  <div>{loop.map((phrase) => <>{phrase} <span>✳</span> </>)}</div>
+</div>

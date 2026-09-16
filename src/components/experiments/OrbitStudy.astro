@@ -1,0 +1,25 @@
+<article class="study">
+  <div class="spatial-study">
+    <div class="demo-top mono"><span>3D EXPERIMENT / 004</span><span>TAKE IT FOR A SPIN</span></div>
+    <canvas
+      id="orbit-canvas"
+      tabindex="0"
+      role="img"
+      aria-label="Interactive metallic 3D knot. Drag to rotate, or use arrow keys. Switch between a solid surface and wireframe. Home resets the view."
+      aria-describedby="orbit-help">A three-dimensional metallic knot. Use the rotation buttons below to change its orientation.</canvas>
+    <div class="experiment-controls">
+      <span id="orbit-help">DRAG TO ORBIT / ← ↑ ↓ →</span>
+      <div>
+        <button id="orbit-turn" aria-pressed="false">Wireframe</button>
+        <button id="orbit-pause" aria-pressed="false">Pause</button>
+        <button id="orbit-reset" aria-label="Reset 3D view">Reset ↺</button>
+      </div>
+    </div>
+  </div>
+  <div class="study-caption"><h3>A different dimension.</h3><p>Sculpted in code · Grab it. Turn it. Look closer.</p></div>
+</article>
+
+<script>
+  import { initOrbitKnot } from '../../scripts/orbit-knot';
+  initOrbitKnot();
+</script>

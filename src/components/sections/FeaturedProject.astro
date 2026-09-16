@@ -1,0 +1,41 @@
+---
+import ExplorerGraph from '../experiments/ExplorerGraph.astro';
+import OverviewDashboard from '../experiments/OverviewDashboard.astro';
+
+const tags = ['Frontend', 'UI / UX', 'Interactive graph'];
+---
+
+<article class="featured-project">
+  <div class="product-demo">
+    <div class="demo-top mono"><span>INTERFACE STUDY / 001</span><span>↗</span></div>
+    <div class="product-window explorer-window">
+      <aside>
+        <strong>tk /</strong><span>Products</span><span>Projects</span><span>Policies</span><span class="active">Explorer</span>
+        <small>WORKSPACE<br />Interface study</small>
+      </aside>
+      <div class="product-main">
+        <div class="explorer-header"><span>SYSTEMS / EXPLORER</span><span class="avatar">TK</span></div>
+        <div class="explorer-tabs" role="tablist" aria-label="Interface preview">
+          <button id="explorer-tab" role="tab" aria-selected="true" aria-controls="explorer-panel" tabindex="0">Graph</button>
+          <button id="overview-tab" role="tab" aria-selected="false" aria-controls="overview-panel" tabindex="-1">Overview</button>
+          <span>INTERACTIVE EXCERPT</span>
+        </div>
+        <ExplorerGraph />
+        <OverviewDashboard />
+      </div>
+    </div>
+    <span class="tape">COMPLEXITY, UNDER CONTROL.</span>
+  </div>
+  <div class="project-caption">
+    <div>
+      <span class="mono">01 / PRODUCT ENGINEERING</span>
+      <h3>Making the complicated click.</h3>
+      <p>
+        My graph work at Chainloop focuses on making relationships between attestations, artifacts, and evidence easier
+        to explore. This interactive excerpt recreates a small part of that experience with sample relationships.
+      </p>
+      <div class="tags">{tags.map((tag) => <span>{tag}</span>)}</div>
+    </div>
+    <span class="project-number" aria-hidden="true">01</span>
+  </div>
+</article>

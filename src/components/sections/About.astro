@@ -1,0 +1,29 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+
+const facts = [
+  { label: 'DEFAULT SETTING', value: 'Curious, then particular.' },
+  { label: 'SOFT SPOT', value: 'Hard problems. Good details.' },
+  { label: 'THE APPROACH', value: 'Make it clear. Make it feel right.' },
+];
+---
+
+<section id="about" class="about section-pad">
+  <SectionLabel index="03" title="THE HUMAN" note="YES, THERE’S ONE BEHIND ALL THIS." />
+  <div class="about-layout">
+    <div class="about-name">
+      <span class="mono">ME, MINUS THE CORPORATE BIO.</span>
+      <h2>TOMASZ<br />KNURA<span>®</span></h2>
+      <div class="name-label">FRONTEND ENGINEER / DESIGN ENTHUSIAST</div>
+      <span class="scribble">probably adjusting<br />the easing curve.</span>
+    </div>
+    <div class="about-copy">
+      <h3>I like building things<br />that make sense.<br /><span>And then making them<br />feel a little special.</span></h3>
+      <p>I work across frontend engineering and UI/UX, connecting what a product needs to do with how people actually experience it.</p>
+      <p>My background spans React and Next.js products, React Native apps, and interactive 3D. I’m happiest where technical complexity meets a deceptively simple interface.</p>
+      <div class="about-facts">
+        {facts.map((fact) => <div><span>{fact.label}</span><strong>{fact.value}</strong></div>)}
+      </div>
+    </div>
+  </div>
+</section>

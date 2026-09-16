@@ -1,0 +1,32 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+---
+
+<section id="play" class="play section-pad">
+  <SectionLabel index="02" title="THE PLAYGROUND" note="PLEASE TOUCH THE THINGS." />
+  <div class="play-layout">
+    <div>
+      <h2>“It works”<br />is just<br /><em>the start.</em></h2>
+      <p>The last 10% is where the feeling lives.<br />The feedback. The timing. The tiny<br />details that make something click.</p>
+      <span class="scribble">go on, feel the difference →</span>
+    </div>
+    <div class="play-console">
+      <div class="mode-switch" role="group" aria-label="Interaction quality">
+        <button id="plain-mode" aria-pressed="false">It works.</button>
+        <button id="nice-mode" aria-pressed="true">It feels right. ✳</button>
+      </div>
+      <div class="button-stage polished" id="button-stage">
+        <span class="mono stage-note">ONE BUTTON. TWO PERSONALITIES.</span>
+        <button id="save-button"><span id="save-label">Save something</span><span id="save-icon">↗</span></button>
+        <span id="save-status" aria-live="polite">Nothing important. Just a very good button.</span>
+        <div class="sparkles" aria-hidden="true">✳ &nbsp; + &nbsp; ✳</div>
+      </div>
+      <div class="console-bottom mono"><span id="mode-caption">FEEDBACK + MOTION + A LITTLE JOY</span><span>TRY IT ↑</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initPlayground } from '../../scripts/playground';
+  initPlayground();
+</script>

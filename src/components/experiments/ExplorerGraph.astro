@@ -1,0 +1,30 @@
+---
+import { legend, palette } from '../../data/graph';
+---
+
+<div id="explorer-panel" role="tabpanel" aria-labelledby="explorer-tab">
+  <div class="explorer-canvas">
+    <div class="explorer-legend" aria-label="Node types">
+      {legend.map((item) => <span><i style={`--node-color:${palette[item.kind]}`}></i>{item.label}</span>)}
+    </div>
+    <svg id="explorer-graph" role="group" aria-label="Explorer graph excerpt. Select or drag nodes. Drag the canvas to pan.">
+      <g id="explorer-world"><g id="explorer-edges" aria-hidden="true"></g><g id="explorer-nodes"></g></g>
+    </svg>
+    <div class="explorer-tools">
+      <button id="explorer-out" aria-label="Zoom out">−</button>
+      <button id="explorer-in" aria-label="Zoom in">+</button>
+      <button id="explorer-fit">Fit</button>
+      <button id="explorer-reset" aria-label="Reset graph positions">↺</button>
+    </div>
+  </div>
+  <div class="explorer-info" aria-live="polite">
+    <strong id="explorer-selected">Release attestation</strong>
+    <span id="explorer-detail">Select a node to trace its connections.</span>
+  </div>
+  <p class="explorer-hint">Pull a node. The rest follows. · Illustrative relationships</p>
+</div>
+
+<script>
+  import { initExplorerGraph } from '../../scripts/explorer-graph';
+  initExplorerGraph();
+</script>
