@@ -4,5 +4,11 @@ const loop = [...phrases, ...phrases];
 ---
 
 <div class="ticker" aria-hidden="true">
-  <div>{loop.map((phrase) => <>{phrase} <span>✳</span> </>)}</div>
+  <div>
+    {loop.map((phrase) => (
+      <>
+        {phrase} <span>✳</span>{' '}
+      </>
+    ))}
+  </div>
 </div>

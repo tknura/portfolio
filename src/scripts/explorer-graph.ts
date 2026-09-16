@@ -29,7 +29,15 @@ export function initExplorerGraph() {
   const zoomOut = byId<HTMLButtonElement>('explorer-out');
 
   const { nodes: baseNodes, links } = buildGraph();
-  const nodes = baseNodes.map((n) => ({ ...n, vx: 0, vy: 0, homeX: n.x, homeY: n.y, fx: null, fy: null })) as RenderNode[];
+  const nodes = baseNodes.map((n) => ({
+    ...n,
+    vx: 0,
+    vy: 0,
+    homeX: n.x,
+    homeY: n.y,
+    fx: null,
+    fy: null,
+  })) as RenderNode[];
   const map = new Map(nodes.map((n) => [n.id, n]));
   const initial = nodes.map((n) => [n.x, n.y] as const);
 
@@ -96,7 +104,14 @@ export function initExplorerGraph() {
     if (icon) {
       el(
         'path',
-        { d: icon, fill: 'none', stroke: '#fff', 'stroke-width': '1.4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' },
+        {
+          d: icon,
+          fill: 'none',
+          stroke: '#fff',
+          'stroke-width': '1.4',
+          'stroke-linecap': 'round',
+          'stroke-linejoin': 'round',
+        },
         g,
       );
     }

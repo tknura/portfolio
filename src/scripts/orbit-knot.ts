@@ -7,7 +7,11 @@ const unit = (v: Vec3): Vec3 => {
   const l = Math.hypot(...v) || 1;
   return [v[0] / l, v[1] / l, v[2] / l];
 };
-const cross = (a: Vec3, b: Vec3): Vec3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const cross = (a: Vec3, b: Vec3): Vec3 => [
+  a[1] * b[2] - a[2] * b[1],
+  a[2] * b[0] - a[0] * b[2],
+  a[0] * b[1] - a[1] * b[0],
+];
 const point = (t: number): Vec3 => [
   (1 + 0.36 * Math.cos(3 * t)) * Math.cos(2 * t),
   0.55 * Math.sin(3 * t),
@@ -106,7 +110,13 @@ export function initOrbitKnot() {
       const t = (i / 48) * Math.PI * 2;
       ctx!.fillStyle = i % 4 === 0 ? '#e3e7e975' : '#e3e7e924';
       ctx!.beginPath();
-      ctx!.arc(w / 2 + Math.cos(t) * Math.min(w * 0.43, h * 0.53), h / 2 + Math.sin(t) * h * 0.43, i % 4 === 0 ? 1.5 : 0.7, 0, Math.PI * 2);
+      ctx!.arc(
+        w / 2 + Math.cos(t) * Math.min(w * 0.43, h * 0.53),
+        h / 2 + Math.sin(t) * h * 0.43,
+        i % 4 === 0 ? 1.5 : 0.7,
+        0,
+        Math.PI * 2,
+      );
       ctx!.fill();
     }
 
@@ -122,9 +132,7 @@ export function initOrbitKnot() {
         else ctx!.moveTo(p[0], p[1]);
       });
       ctx!.closePath();
-      const normal = unit(
-        f.reduce<Vec3>((v, i) => [v[0] + rn[i]![0], v[1] + rn[i]![1], v[2] + rn[i]![2]], [0, 0, 0]),
-      );
+      const normal = unit(f.reduce<Vec3>((v, i) => [v[0] + rn[i]![0], v[1] + rn[i]![1], v[2] + rn[i]![2]], [0, 0, 0]));
       const diffuse = Math.max(0, -normal[0] * 0.35 - normal[1] * 0.55 - normal[2] * 0.76);
       const shine = Math.pow(Math.max(0, -normal[1] * 0.25 - normal[2] * 0.96), 18);
       const light = 13 + diffuse * 43 + shine * 35;
@@ -172,7 +180,8 @@ export function initOrbitKnot() {
   const finish = (e: PointerEvent) => {
     if (e.pointerId === activePointer) activePointer = null;
   };
-  for (const type of ['pointerup', 'pointercancel', 'lostpointercapture'] as const) canvas.addEventListener(type, finish);
+  for (const type of ['pointerup', 'pointercancel', 'lostpointercapture'] as const)
+    canvas.addEventListener(type, finish);
 
   canvas.addEventListener('keydown', (e) => {
     if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home'].includes(e.key)) return;

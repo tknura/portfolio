@@ -1,5 +1,14 @@
 ---
-import { areaPath, chart, linePath, policyGroups, reviewedState, scoreTrend, sparkPath, trendPoints } from '../../data/overview';
+import {
+  areaPath,
+  chart,
+  linePath,
+  policyGroups,
+  reviewedState,
+  scoreTrend,
+  sparkPath,
+  trendPoints,
+} from '../../data/overview';
 
 const points = trendPoints(scoreTrend);
 const last = points[points.length - 1]!;
@@ -23,47 +32,99 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
   data-score={last.value}
   data-score-after={reviewedState.scoreAfter}
   data-total={totalChecks}
-  data-review-policy={reviewedState.policyId}>
+  data-review-policy={reviewedState.policyId}
+>
   <div class="dashboard-title">
-    <div><small>PRODUCT / COMPLIANCE · LAST 30 DAYS</small><h3>Less noise.<br />More clarity.</h3></div>
-    <span class="score"><span id="score-value">{last.value}</span><small>%</small></span>
+    <div>
+      <small>PRODUCT / COMPLIANCE · LAST 30 DAYS</small>
+      <h3>
+        Less noise.
+        <br />
+        More clarity.
+      </h3>
+    </div>
+    <span class="score">
+      <span id="score-value">{last.value}</span>
+      <small>%</small>
+    </span>
   </div>
 
   <div class="dash-charts">
     <figure class="dash-card dash-trend">
-      <figcaption><span>Compliance score</span><span class="dash-delta" id="score-delta">+{last.value - scoreTrend[0]!} pts vs 30d ago</span></figcaption>
+      <figcaption>
+        <span>Compliance score</span>
+        <span class="dash-delta" id="score-delta">
+          +{last.value - scoreTrend[0]!} pts vs 30d ago
+        </span>
+      </figcaption>
       <div class="trend-wrap">
-        <svg viewBox={`0 0 ${chart.width} ${chart.height}`} role="img" aria-labelledby="trend-title" id="trend-chart" preserveAspectRatio="none">
+        <svg
+          viewBox={`0 0 ${chart.width} ${chart.height}`}
+          role="img"
+          aria-labelledby="trend-title"
+          id="trend-chart"
+          preserveAspectRatio="none"
+        >
           <title id="trend-title">Compliance score over the last 30 days, rising from {scoreTrend[0]} to {last.value} percent.</title>
           {gridValues.map((v) => (
             <g class="trend-grid">
               <line x1={chart.padLeft} x2={chart.width - chart.padRight} y1={yFor(v)} y2={yFor(v)} />
-              <text x={chart.width - chart.padRight + 6} y={yFor(v) + 3}>{v}</text>
+              <text x={chart.width - chart.padRight + 6} y={yFor(v) + 3}>
+                {v}
+              </text>
             </g>
           ))}
           <path class="trend-area" d={areaPath(points)} id="trend-area" />
           <path class="trend-line" d={linePath(points)} id="trend-line" />
-          <line class="trend-crosshair is-hidden" id="trend-crosshair" y1={chart.padTop} y2={chart.height - chart.padBottom} />
+          <line
+            class="trend-crosshair is-hidden"
+            id="trend-crosshair"
+            y1={chart.padTop}
+            y2={chart.height - chart.padBottom}
+          />
           <circle class="trend-hover is-hidden" id="trend-hover" r="4" />
           <circle class="trend-end" id="trend-end" cx={last.x} cy={last.y} r="4" />
-          <text class="trend-end-label" id="trend-end-label" x={last.x - 6} y={last.y - 8}>{last.value}%</text>
-          <text class="trend-axis" x={chart.padLeft} y={chart.height - 4}>30d ago</text>
-          <text class="trend-axis" x={chart.width - chart.padRight} y={chart.height - 4} text-anchor="end">today</text>
+          <text class="trend-end-label" id="trend-end-label" x={last.x - 6} y={last.y - 8}>
+            {last.value}%
+          </text>
+          <text class="trend-axis" x={chart.padLeft} y={chart.height - 4}>
+            30d ago
+          </text>
+          <text class="trend-axis" x={chart.width - chart.padRight} y={chart.height - 4} text-anchor="end">
+            today
+          </text>
         </svg>
         <div class="trend-tooltip" id="trend-tooltip" role="status" hidden>
-          <strong id="trend-tip-value"></strong><span id="trend-tip-day"></span>
+          <strong id="trend-tip-value"></strong>
+          <span id="trend-tip-day"></span>
         </div>
       </div>
     </figure>
 
     <figure class="dash-card dash-bars">
-      <figcaption><span>Checks by policy</span><span class="mono">{totalPassing} / {totalChecks} PASSING</span></figcaption>
+      <figcaption>
+        <span>Checks by policy</span>
+        <span class="mono">
+          {totalPassing} / {totalChecks} PASSING
+        </span>
+      </figcaption>
       <ul class="bar-list" aria-label="Checks passing by policy group">
         {policyGroups.map((g) => (
-          <li class="bar-row" data-policy={g.id} data-passing={g.passing} data-total={g.total} tabindex="0" aria-label={`${g.label}: ${g.passing} of ${g.total} checks passing`}>
+          <li
+            class="bar-row"
+            data-policy={g.id}
+            data-passing={g.passing}
+            data-total={g.total}
+            tabindex="0"
+            aria-label={`${g.label}: ${g.passing} of ${g.total} checks passing`}
+          >
             <span class="bar-label">{g.label}</span>
-            <span class="bar-track"><span class="bar-fill" style={`width:${(g.passing / g.total) * 100}%`}></span></span>
-            <span class="bar-value"><b>{g.passing}</b>/{g.total}</span>
+            <span class="bar-track">
+              <span class="bar-fill" style={`width:${(g.passing / g.total) * 100}%`}></span>
+            </span>
+            <span class="bar-value">
+              <b>{g.passing}</b>/{g.total}
+            </span>
           </li>
         ))}
       </ul>
@@ -73,20 +134,37 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
   <div class="dash-metrics">
     <div class="stat-tile">
       <small>Checks passing</small>
-      <b id="checks">{totalPassing} / {totalChecks}</b>
-      <svg class="spark" viewBox="0 0 80 22" aria-hidden="true" preserveAspectRatio="none"><path d={sparkPath(passingTrend, 80, 22)} /></svg>
+      <b id="checks">
+        {totalPassing} / {totalChecks}
+      </b>
+      <svg class="spark" viewBox="0 0 80 22" aria-hidden="true" preserveAspectRatio="none">
+        <path d={sparkPath(passingTrend, 80, 22)} />
+      </svg>
     </div>
     <div class="stat-tile is-warning">
       <small>Needs attention</small>
       <b id="attention">{pad2(attention)}</b>
-      <svg class="spark" viewBox="0 0 80 22" aria-hidden="true" preserveAspectRatio="none"><path d={sparkPath(attentionTrend, 80, 22)} /></svg>
+      <svg class="spark" viewBox="0 0 80 22" aria-hidden="true" preserveAspectRatio="none">
+        <path d={sparkPath(attentionTrend, 80, 22)} />
+      </svg>
     </div>
   </div>
 
-  <div class="policy-row"><span>✓ &nbsp; Source verified</span><span>Passed</span></div>
-  <div class="policy-row"><span>✓ &nbsp; Build integrity</span><span>Passed</span></div>
-  <div class="policy-row" id="policy"><span>! &nbsp; Review evidence</span><button id="review">Review →</button></div>
-  <p id="review-status" class="demo-status" aria-live="polite">An interactive concept. Try reviewing the evidence.</p>
+  <div class="policy-row">
+    <span>✓ &nbsp; Source verified</span>
+    <span>Passed</span>
+  </div>
+  <div class="policy-row">
+    <span>✓ &nbsp; Build integrity</span>
+    <span>Passed</span>
+  </div>
+  <div class="policy-row" id="policy">
+    <span>! &nbsp; Review evidence</span>
+    <button id="review">Review →</button>
+  </div>
+  <p id="review-status" class="demo-status" aria-live="polite">
+    An interactive concept. Try reviewing the evidence.
+  </p>
 </div>
 
 <script>

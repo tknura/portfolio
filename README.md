@@ -13,10 +13,10 @@ npm run dev
 
 Open http://localhost:4321. Other scripts:
 
-| Script            | What it does                                        |
-| ----------------- | --------------------------------------------------- |
-| `npm run build`   | Production build to `dist/`                        |
-| `npm run preview` | Serve the production build locally                  |
+| Script            | What it does                                           |
+| ----------------- | ------------------------------------------------------ |
+| `npm run build`   | Production build to `dist/`                            |
+| `npm run preview` | Serve the production build locally                     |
 | `npm run check`   | Type-check `.astro` and `.ts` files with `astro check` |
 
 ## Project structure
@@ -49,18 +49,23 @@ Astro bundles each component's `<script>` at build time, so scripts stay colocat
 ## Editing common parts
 
 ### Content and branding
+
 Section copy lives in the matching component under `src/components/sections/`. Site-wide metadata and the navigation list are in `src/data/site.ts`.
 
 ### Contact
+
 The contact dialog says that contact details are coming soon. There is no backend, email delivery, or stored form submission. Update `ContactDialog.astro` and the copy in `src/scripts/contact-dialog.ts` before a public launch.
 
 ### Graph
+
 Change the nodes, links, `palette`, `legend`, and `icons` in `src/data/graph.ts`. Every link must reference an existing node ID. Physics constants (link lengths, repulsion, damping, collision spacing) are in `src/scripts/graph-physics.ts`. The simulation sleeps after settling and pauses when offscreen or when the tab is hidden. Reduced-motion users get a settled layout without continuous movement.
 
 ### Styles
+
 `src/styles/global.css` is a single global stylesheet. Main tokens are `--paper`, `--ink`, `--accent`, and `--line`. It contains successive design overrides near the end of the file, so later rules take precedence. The stylesheet is imported once in `BaseLayout.astro`.
 
 ### Layout
+
 The page is edge-to-edge through 1600 CSS pixels. Above 1600px, the framed sheet appears with a maximum width of 1440px. Change the final `.page-frame` media query to adjust this threshold.
 
 ## Hosting

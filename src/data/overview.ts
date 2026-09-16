@@ -5,7 +5,10 @@ export interface PolicyGroup {
   total: number;
 }
 
-export const scoreTrend = [71, 72, 72, 74, 73, 75, 77, 76, 78, 78, 80, 79, 81, 82, 82, 81, 83, 84, 84, 83, 85, 84, 86, 85, 84, 83, 84, 85, 84, 84];
+export const scoreTrend = [
+  71, 72, 72, 74, 73, 75, 77, 76, 78, 78, 80, 79, 81, 82, 82, 81, 83, 84, 84, 83, 85, 84, 86, 85, 84, 83, 84, 85, 84,
+  84,
+];
 
 export const policyGroups: PolicyGroup[] = [
   { id: 'source', label: 'Source', passing: 6, total: 6 },
