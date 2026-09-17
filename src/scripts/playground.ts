@@ -22,7 +22,7 @@ export function initPlayground() {
     button.classList.remove('is-loading', 'is-saved');
     button.setAttribute('aria-busy', 'false');
     label.textContent = 'Save something';
-    icon.textContent = '↗';
+    icon.textContent = '↗︎';
     status.textContent = isNice ? 'Nothing important. Just a very good button.' : 'A button. It does what it says.';
     plain.setAttribute('aria-pressed', String(!isNice));
     nice.setAttribute('aria-pressed', String(isNice));

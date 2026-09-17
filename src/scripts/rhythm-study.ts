@@ -10,10 +10,10 @@ export function initRhythmStudy() {
     bars.classList.remove('playing');
     void bars.offsetWidth;
     bars.classList.add('playing');
-    button.innerHTML = 'A little rhythm. <span>✳</span>';
+    button.innerHTML = 'A little rhythm. <span>✳︎</span>';
     timer = setTimeout(() => {
       bars.classList.remove('playing');
-      button.innerHTML = 'Play it again <span>↗</span>';
+      button.innerHTML = 'Play it again <span>↗︎</span>';
     }, 2700);
   });
 }
